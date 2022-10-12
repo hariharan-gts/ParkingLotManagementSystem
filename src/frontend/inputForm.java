@@ -275,10 +275,12 @@ public class inputForm extends JFrame{
 		return (match.find() && match.group().equals(getPno()));  
 	}
 	public void insertInfo() {
-		String q="insert into info(v_no,name,phno,date,v_type,address,occupancy) values(?,?,?,?,?,?,?);";
+		String q="insert into info(v_no,name,phno,date,v_type,address,occupancy,loc) values(?,?,?,?,?,?,?,?);";
 		String arr[]= {getVno(),getName(),getPno(),getSdate(),getTypV(),getAdd(),"in"};
-		new loading().insertable(q, arr);
-		new loading().insertInTable("insert into in_info(intoken_no) values(?);","select token_no from info where v_no='"+getVno() +"';");
+		loading obj=new loading();
+		obj.insertable(q, arr);
+		obj.insertInTable("insert into in_info(intoken_no) values(?);","select token_no from info where v_no='"+getVno() +"';");
+		
 		dispose();
 		new entry();
 		

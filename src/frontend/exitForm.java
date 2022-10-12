@@ -119,6 +119,13 @@ public void setAmt(String amt) {
 					inTimeI.setText(inDate);
 					String type=mainS.substring(19);
 					String amount=new TimeCalc().getTotalTime(inDate,date , type);
+					if(amount.equals("0")) {
+						if(type.equals("car")) {
+							amount="10";
+						}else {
+							amount="5";
+						}
+					}
 					setAmt(amount);
 					int totHours=0;
 			        if(type.equals("car")) {
@@ -239,7 +246,7 @@ public void setAmt(String amt) {
              setAmt(amountI.getText());
              setuAmt(inAmtI.getText());
              if(isFound()) {
-            	 if(getAmt().equals(0)) {
+            	   if(getAmt().equals(0)) {
                		setAmt("1");
                	  }
             	   if(getuAmt().equals(getAmt())) {

@@ -43,13 +43,15 @@ public class entry extends JFrame{
     	forIn.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
-				//dispose();
+				
 				if(getVacCount().equals("0")) {
 					JOptionPane.showMessageDialog(null, "Oops Parking lot is full!!");
 				}
 				else
+				{
+					dispose();
 				new inputForm();
-				
+				}
 			}
 		});
     	
@@ -60,11 +62,13 @@ public class entry extends JFrame{
 		
 			public void actionPerformed(ActionEvent e) {
 			//dispose();
-			if(getVacCount().equals("200"))
+			if(getVacCount().equals("100"))
 			JOptionPane.showMessageDialog(null, "No Vechilce in parking lot");
 			else
+			{
+				dispose();
 			new exitForm();
-				
+			}
 			}
 		});
     	
@@ -87,7 +91,7 @@ public class entry extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				//dispose();
 				new adminForm();
 			}
 		});

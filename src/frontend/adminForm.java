@@ -65,7 +65,7 @@ public class adminForm extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new entry();
+				//new entry();
 			}
 		});
     	add(back);
@@ -107,7 +107,7 @@ public class adminForm extends JFrame{
     }
 	public static void main(String[] args) {
 		new adminForm();
-     System.out.println("Admin");
+    
 	}
 
 }

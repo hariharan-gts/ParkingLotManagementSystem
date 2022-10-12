@@ -16,19 +16,30 @@ public class loading {
      ResultSet rs = null;
      ArrayList<String>inv_no=new ArrayList<>();
      ArrayList<Integer>in_tok_info=new ArrayList<>();
+     
+     boolean arr[][];
+     
      public String inDate,vType;
      //con = connection.connectDB();
  
      //opens at loading time
      public loading() {
 		con=connection.connectDB();
+		arr=new boolean[10][10];
+		//Arrays.fill(arr, false);
 		try {
 			//loading vehicle no for input form and displaying vacant count in entry form
-			p=con.prepareStatement("select v_no from info where occupancy='in'");
+			p=con.prepareStatement("select v_no,loc from info where occupancy='in'");
 			rs=p.executeQuery();
 			while(rs.next()) {
 				inv_no.add(rs.getString(1));
+				int n=Integer.parseInt(rs.getString(2));
+				int i=n/10;
+				int j=n%10;
+				arr[i-1][j-1]=true;
+				System.out.println(i+" "+j);
 			}
+			
 			
 			//select toke no from out_info table for checking if veh is parked or not
 			p=con.prepareStatement("select intoken_no from in_info;");
@@ -36,6 +47,7 @@ public class loading {
 			while(rs.next()) {
 				in_tok_info.add(rs.getInt(1));
 			}
+			
 			//System.out.println(in_tok_info);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -76,7 +88,7 @@ public class loading {
      //over all insertion
 	 public void insertable(String q,String ar[]) {
 		   try {
-				
+				String s=findEmpty();
 				p=con.prepareStatement(q);
 				p.setString(1, ar[0]);
 				p.setString(2, ar[1]);
@@ -85,11 +97,13 @@ public class loading {
 				p.setString(5, ar[4]);
 				p.setString(6, ar[5]);
 				p.setString(7, ar[6]);
+				p.setString(8, s);
 				p.executeUpdate();
 				//con.setAutoCommit(true);
 				//con.close();
 				String tokno=token_no(ar[0]);
-				JOptionPane.showMessageDialog(null, "Token_no:"+tokno);
+				
+				JOptionPane.showMessageDialog(null, "Token_no:"+tokno+"\nSlot:"+s);
 				
 	   	}catch(Exception e) {
 	   		JOptionPane.showMessageDialog(null, "Exception--->"+e.getMessage());
@@ -140,7 +154,7 @@ public class loading {
 	  }
 	  //function for returning vacant space
 	  public String totVacCnt() {
-		  return String.valueOf(200-inv_no.size());
+		  return String.valueOf(100-inv_no.size());
 	  }
 	  
 	  //return input date and v_type
@@ -164,7 +178,7 @@ public class loading {
 			
 				e.printStackTrace();
 			}	
-		  System.out.println(getvType());
+		 // System.out.println(getvType());
 		  return getInDate()+getvType();
 	  }
 	  
@@ -195,7 +209,18 @@ public class loading {
 			e.printStackTrace();
 		}	
 	}
-	  
+	  //find empty slot
+	  public String findEmpty() {
+		  for(int i=0;i<arr.length;i++) {
+			  for(int j=0;j<arr[0].length;j++) {
+				  if(!arr[i][j]) {
+					 String ans=String.valueOf((10*(i+1))+(j+1));
+					 return ans;
+				  }
+			  }
+		  }
+		  return "";
+	  }
 	  //check vehicle already exist or not
 	  public boolean isAlready(String s) {
 		  return inv_no.contains(s);
@@ -210,10 +235,11 @@ public class loading {
 				  rs.last();
 				  size = rs.getRow();
 			  }
-			  System.out.println(size);
+			  //System.out.println(size);
 			  int index = 0;
-			  String arr[][]= new String[size][8];
-			  rs.first();
+			  String arr[][]= new String[size][9];
+			  p=con.prepareStatement("select * from info");
+			  rs=p.executeQuery();
 			  while(rs.next()) {
 				  arr[index][0] = String.valueOf(rs.getInt(1));
 				  arr[index][1] = rs.getString(2);
@@ -223,6 +249,8 @@ public class loading {
 				  arr[index][5] = rs.getString(6);
 				  arr[index][6] = rs.getString(7);
 				  arr[index][7] = rs.getString(8);
+				  arr[index][8]=rs.getString(9);
+				  //System.out.println(Arrays.toString(arr[index]));
 				  index++;
 			  }
 			  return arr;

@@ -19,7 +19,7 @@ public class Allinfo extends JFrame{
 	public Allinfo() {
 		setLayout(null);
 		setSize(800,720);
-		setLayout(new GridLayout(9, 8));
+		setLayout(new GridLayout(0, 1));
 		setTitle("All Information Table Window");
 		jp = new JPanel();
 		jp.setLayout(new FlowLayout());

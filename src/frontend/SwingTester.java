@@ -38,7 +38,7 @@ public class SwingTester {
       mainFrame.addWindowListener(new WindowAdapter() {
          public void windowClosing(WindowEvent windowEvent){
             mainFrame.dispose();
-        	 new entry();
+        	
          }        
       });  
       
@@ -70,7 +70,7 @@ public class SwingTester {
    public void showTableDemo(){
       headerLabel.setText("Customer Details using JTable"); 
 
-      String[] columnNames = {"TOKEN_NO","VEHICLE_NO","NAME","PHONE","DATE","VEHICLE_TYPE","ADDRESS","OCCUPANCY"};
+      String[] columnNames = {"TOKEN_NO","VEHICLE_NO","NAME","PHONE","DATE","VEHICLE_TYPE","ADDRESS","OCCUPANCY","LOCATION"};
       Object[][] data = new loading().allInfo();
       JTable table = new JTable(data, columnNames);
       JScrollPane scrollPane = new JScrollPane(table);
