@@ -37,7 +37,7 @@ public class Table extends JPanel{
         jf.setSize(1100, 300);
         //jf.setLayout(null);
         jf.setVisible(true);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.add(tab);
     }
     public static void main(String [] a) {

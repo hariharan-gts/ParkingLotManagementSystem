@@ -97,7 +97,8 @@ public class adminForm extends JFrame{
     	add(submit);
     	addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent){
-          System.exit(0);
+             dispose();
+           
             }        
          });  
     	setTitle("VSAVIOUR");
