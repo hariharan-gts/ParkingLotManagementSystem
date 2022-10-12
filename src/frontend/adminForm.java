@@ -85,7 +85,7 @@ public class adminForm extends JFrame{
 					System.out.println(f1+" "+f2);
 					if(f1&&f2) {
 						dispose();
-						new SwingTester().showTableDemo();
+						new Table().loadTable();
 					}else {
 						JOptionPane.showMessageDialog(null, "Enter valid Details");
 					}
@@ -100,6 +100,7 @@ public class adminForm extends JFrame{
           System.exit(0);
             }        
          });  
+    	setTitle("VSAVIOUR");
     	setSize(500,350);
     	setBackground(new Color(255, 255, 255));
     	setResizable(true);

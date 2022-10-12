@@ -101,6 +101,7 @@ public class entry extends JFrame{
           System.exit(0);
             }        
          });  
+    	setTitle("VSAVIOUR");
     	setSize(600,600);
     	setBackground(new Color(255, 255, 255));
     	setResizable(true);

@@ -37,7 +37,7 @@ public class loading {
 				int i=n/10;
 				int j=n%10;
 				arr[i-1][j-1]=true;
-				System.out.println(i+" "+j);
+				//System.out.println(i+" "+j);
 			}
 			
 			
@@ -99,7 +99,7 @@ public class loading {
 				p.setString(7, ar[6]);
 				p.setString(8, s);
 				p.executeUpdate();
-				//con.setAutoCommit(true);
+				con.setAutoCommit(true);
 				//con.close();
 				String tokno=token_no(ar[0]);
 				
@@ -166,7 +166,7 @@ public class loading {
 				 if(rs.next()) {
 				  setInDate(rs.getString(1));
 				 }
-				 System.out.println(getInDate());
+				// System.out.println(getInDate());
 				 
 				 p=con.prepareStatement("select v_type from info where token_no="+Integer.parseInt(q)+";");
 				 rs=p.executeQuery();

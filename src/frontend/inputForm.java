@@ -209,7 +209,7 @@ public class inputForm extends JFrame{
              System.exit(0);
 			}
 		});
-    	  
+    	setTitle("VSAVIOUR");
     	setFont(new Font("Tahoma", Font.PLAIN, 15));
     	setSize(720,800);
     	setBackground(new Color(255, 255, 255));

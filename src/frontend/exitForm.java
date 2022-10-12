@@ -283,6 +283,7 @@ public void setAmt(String amt) {
           System.exit(0);
             }        
          });  
+    	setTitle("VSAVIOUR");
     	setSize(720,800);
     	setBackground(new Color(255, 255, 255));
     	setResizable(true);
