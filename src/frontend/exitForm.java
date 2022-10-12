@@ -24,6 +24,7 @@ public class exitForm extends JFrame{
    private JTextField vNoI,tokenNoI,inAmtI;
    //private JTextArea billO;\
   String billVal;
+  loading obj2;
    private JButton search,back,pay,exit;
    public String getuAmt() {
 	return uAmt;
@@ -71,8 +72,8 @@ public void setAmt(String amt) {
 	this.amt = amt;
 }
    public exitForm() {
-	    
 		setLayout(null);
+		obj2=new loading();
 		title=new JLabel("VSAVIOUR");
     	title.setFont(new Font("Tahoma", Font.PLAIN, 30));
     	title.setBounds(270,40,250,80);
@@ -104,7 +105,7 @@ public void setAmt(String amt) {
     	//outtime and total hours
     	search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				found=new loading().isFound(Integer.parseInt(tokenNoI.getText()));
+				found=obj2.isFound(Integer.parseInt(tokenNoI.getText()));
 				System.out.println(tokenNoI.getText());
 				if(found) {
 					setTokenNode(tokenNoI.getText());
@@ -114,7 +115,7 @@ public void setAmt(String amt) {
 					String date = simpleDateFormat.format(new Date());
 					
 					outTimeI.setText(date);
-					String mainS=new loading().getOut(tokenNoI.getText());
+					String mainS=obj2.getOut(tokenNoI.getText());
 					String inDate=mainS.substring(0,19);
 					inTimeI.setText(inDate);
 					String type=mainS.substring(19);
@@ -251,7 +252,7 @@ public void setAmt(String amt) {
                	  }
             	   if(getuAmt().equals(getAmt())) {
                   	
-            		new loading().outVal(getTokenNo(),gettHrs());   
+            		obj2.outVal(getTokenNo(),gettHrs());   
             		   
                   	 JOptionPane.showMessageDialog(null, "THANKS FOR USING OUR SERVICE!\nVIST US AGAIN!!");
       				 System.exit(0);

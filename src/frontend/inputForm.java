@@ -33,9 +33,10 @@ public class inputForm extends JFrame{
 	private String vno,nameO,pno,sdate,typV,add;
 	public static final String[]veh= {"select","car","bike"};
 	boolean flag=false;
+	loading obj1;
     public inputForm() {
     	setLayout(null);
-    	
+    	obj1=new loading();
     	title=new JLabel("VSAVIOUR");
     	title.setFont(new Font("Tahoma", Font.PLAIN, 30));
     	title.setBounds(270,40,250,80);
@@ -277,9 +278,8 @@ public class inputForm extends JFrame{
 	public void insertInfo() {
 		String q="insert into info(v_no,name,phno,date,v_type,address,occupancy,loc) values(?,?,?,?,?,?,?,?);";
 		String arr[]= {getVno(),getName(),getPno(),getSdate(),getTypV(),getAdd(),"in"};
-		loading obj=new loading();
-		obj.insertable(q, arr);
-		obj.insertInTable("insert into in_info(intoken_no) values(?);","select token_no from info where v_no='"+getVno() +"';");
+		obj1.insertable(q, arr);
+		obj1.insertInTable("insert into in_info(intoken_no) values(?);","select token_no from info where v_no='"+getVno() +"';");
 		
 		dispose();
 		new entry();

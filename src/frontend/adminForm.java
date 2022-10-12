@@ -14,8 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import backend.loading;
+
 public class adminForm extends JFrame{
 	private String id,pass;
+	
 	public String getId() {
 		return id;
 	}
@@ -34,6 +37,7 @@ public class adminForm extends JFrame{
 	private JButton back,submit;
     public adminForm() {
     	setLayout(null);
+    	
     	userId=new JLabel("USER ID");
     	userId.setFont(new Font("Tahoma", Font.PLAIN, 15));
     	userId.setBounds(70,50,170,80);
