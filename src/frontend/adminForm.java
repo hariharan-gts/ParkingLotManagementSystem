@@ -107,7 +107,7 @@ public class adminForm extends JFrame{
     }
 	public static void main(String[] args) {
 		new adminForm();
-
+     System.out.println("Admin");
 	}
 
 }
