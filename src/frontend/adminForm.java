@@ -89,6 +89,7 @@ public class adminForm extends JFrame{
 					System.out.println(f1+" "+f2);
 					if(f1&&f2) {
 						dispose();
+						//loading the table class to display the overall information for the admin
 						new Table().loadTable();
 					}else {
 						JOptionPane.showMessageDialog(null, "Enter valid Details");
