@@ -22,7 +22,7 @@ public class entry extends JFrame{
 	private JLabel vacantCnt;
 	private String vacCount;
 	 loading obj;
-    public String getVacCount() {
+    	public String getVacCount() {
 		return vacCount;
 	}
 	public void setVacCount(String vacCount) {
@@ -31,6 +31,7 @@ public class entry extends JFrame{
 	public entry() {
     	setLayout(null);
     	obj=new loading();
+	//connecting with database to get Vacancy count
     	setVacCount(new loading().totVacCnt());
     	title=new JLabel("VSAVIOUR");
     	title.setFont(new Font("Tahoma", Font.PLAIN, 30));
