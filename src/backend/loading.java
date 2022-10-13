@@ -212,7 +212,7 @@ public class loading {
 	  //find empty slot
 	  public String findEmpty() {
 		  for(int i=0;i<arr.length;i++) {
-			  for(int j=0;j<arr[0].length;j++) {
+			  for(int j=0;j<arr[i].length;j++) {
 				  if(!arr[i][j]) {
 					 String ans=String.valueOf((10*(i+1))+(j+1));
 					 return ans;
@@ -235,7 +235,7 @@ public class loading {
 				  rs.last();
 				  size = rs.getRow();
 			  }
-			  //System.out.println(size);
+
 			  int index = 0;
 			  String arr[][]= new String[size][9];
 			  p=con.prepareStatement("select * from info");
@@ -250,7 +250,6 @@ public class loading {
 				  arr[index][6] = rs.getString(7);
 				  arr[index][7] = rs.getString(8);
 				  arr[index][8]=rs.getString(9);
-				  //System.out.println(Arrays.toString(arr[index]));
 				  index++;
 			  }
 			  return arr;
