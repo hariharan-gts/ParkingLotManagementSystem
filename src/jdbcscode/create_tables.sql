@@ -6,6 +6,8 @@ occupancy enum('in','out'),
 primary key(token_no)
 );
 
+alter table info add loc varchar(20);
+
 ALTER TABLE info AUTO_INCREMENT=1;
 
 create table in_info(token_no int auto_increment,intoken_no int,
@@ -46,3 +48,9 @@ update info set occupancy='out' where token_no=3;
 delete from in_info where intoken_no=3;
 
 insert into out_info(intoken_no,tot_hours) values(3,24);
+
+select * from info;
+
+select v_no,loc from info where occupancy='in';
+
+insert into info(v_no,name,phno,date,v_type,address,occupancy,loc) values('tn23rt4567','raj','9887654321','12:10:2022 21:58:41','bike','bangalore','in','11');

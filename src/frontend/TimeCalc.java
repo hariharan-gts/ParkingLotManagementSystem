@@ -5,7 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class TimeCalc {
+abstract class calc{
+	abstract String getTotalTime(String IN,String Out,String type);
+}
+
+public class TimeCalc extends calc{
 	public String fAns="";
 	
 	public String getfAns() {
